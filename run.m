@@ -33,8 +33,8 @@ for dsi = 1:dbNum
     end
     delta_list = [0.1, 0.3];% setting it to 0.1 or 0.3 can obtain good performance
     %%%%%%%%%for paramers searching
-    m_list = [1 2 4 5] * k;
-    lambda_list = [0.001,0.01, 0.1, 1, 10];
+    m_list = [2 4 5] * k;
+    lambda_list = [0.01, 0.1, 1, 10];
     mu0_list = [1, 10,100,1000,10000];
     %%%%%%%%
     if contains(dataName, 'NGs')
