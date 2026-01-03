@@ -60,8 +60,6 @@ for dsi = 1:dbNum
                     params.maxIter = 30;
                     params.tol = 1e-4;
                     params.k = k;
-                    params.db = dataName;
-                    params.saveObj = false;
                     
                     params.mu = 1e-5;
                     params.rho = 1e-4;

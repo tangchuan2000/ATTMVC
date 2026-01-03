@@ -16,7 +16,7 @@ if isinteger(n3/2)
     endValue = int32(n3/2+1);
     for i = 1:endValue
         [uhat,shat,vhat] = svd(full(G_hat_fft(:,:,i)),'econ');
-        sigma = diag(shat);
+                sigma = diag(shat);
         sigma_i = sigma;
         %% Solve P_miu（a） = argmin 1/2(x-a)^2 + 1/miu f(x)
         thr = beta / ((rho+2*mu0) * delta);
@@ -32,19 +32,21 @@ if isinteger(n3/2)
         if i > 1
             G_hat_ff(:,:,n3-i+2) = conj(uhat)*shat*conj(vhat)';
             objV = objV + sum(shat(:));
-        end
+        end        
         
     end
     [uhat,shat,vhat] = svd(full(G_hat_ff(:,:,endValue+1)),'econ');
     sigma = diag(shat);
-    sigma_i = sigma; 
-    thr = beta / ((rho+2*mu0) * delta);    
-    idx0 = (sigma <= thr);
-    sigma_i(idx0) = 0;
-    idx1 = (sigma > thr & sigma <= delta + 0.5 * thr );
-    sigma_i(idx1) = sigma(idx1) - thr;
-    % idx2: sigma_i > delta --> keep sigma_i    
-    shat = diag(sigma_i);
+    sigma_i = sigma;
+    for j = 1: max_iter
+        w_i = rank_fun_derivative(sigma_i,delta);
+        sigma_i1 = max(0,sigma - w_i/miu);
+        if sum((sigma_i1-sigma_i).^2) < er
+            break
+        end
+        sigma_i = sigma_i1;
+    end
+    shat = diag(sigma_i1);
     objV = objV + sum(shat(:));
     G_hat_ff(:,:,endValue+1) = uhat*shat*vhat';
 else
