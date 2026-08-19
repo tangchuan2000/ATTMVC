@@ -13,6 +13,9 @@ If you find our repository useful, please consider citing it as:
   author={Tang, Chuan and Li, Miaomiao and Wang, Jun and Guan, Renxiang and Wang, Siwei and Tang, Chang and Zhu, En and Liu, Xinwang},
   journal={IEEE Transactions on Image Processing},
   year={2026},
+  volume={35},
+  number={},
+  pages={7049-7062},
   publisher={IEEE}
 }
 
