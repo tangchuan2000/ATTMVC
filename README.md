@@ -1,7 +1,7 @@
 # ATTMVC
 Code for my TIP paper "Align then Tensorize: Multi-level Consistent Anchor Graph Learning for Scalable Multi-View Clustering (ATTMVC)".
 
-Please run the 'run.m', and reproduce the results on 'Caltech101-20' datasets.
+Please run the 'run.m', and reproduce the results on 'NGs' datasets.
 
 # Citation
 If you find our repository useful, please consider citing it as:
